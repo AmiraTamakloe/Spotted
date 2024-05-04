@@ -1,0 +1,40 @@
+<div class="container">
+    <app-header></app-header>
+    <div id="title" class="title">Bienvenue dans le mode temps limité</div>
+    <section id="menu">
+        <div id="button-mode">
+            <div id="Solo" class="mode">
+                <button class="button" (click)="openOverlay = true">
+                    <img src="./assets/game-controller.png" alt="Mode Solo" />
+                </button>
+                <div class="mode-name">Mode Solo</div>
+            </div>
+            <div *ngIf="openOverlay" class="overlay">
+                <div class="overlay-content">
+                    <h1 id="inputname">Nom du Joueur</h1>
+                    <input #inputElement [(ngModel)]="name" placeholder="Entrez votre nom ici... " maxlength="20" />
+                    <div class="name-button">
+                        <button class="button" (click)="submitName()" [disabled]="name.length < 3">Continuer</button>
+                        <button class="button" (click)="clearName()">Abandonner</button>
+                    </div>
+                </div>
+            </div>
+            <div id="Multijoueur" class="mode">
+                <button class="button" (click)="openOverlayMultiplayer = true">
+                    <img src="./assets/multiplayer.png" alt="Mode Multijoueur" />
+                </button>
+                <div class="mode-name">Mode Multijoueur</div>
+            </div>
+            <div *ngIf="openOverlayMultiplayer" class="overlay">
+                <div class="overlay-content">
+                    <h1 id="inputname">Nom du Joueur</h1>
+                    <input #inputElement [(ngModel)]="name" placeholder="Entrez votre nom ici... " maxlength="20" />
+                    <div class="name-button">
+                        <button class="button" (click)="submitNameMultiplayer()" [disabled]="name.length < 3">Continuer</button>
+                        <button class="button" (click)="clearName()">Abandonner</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

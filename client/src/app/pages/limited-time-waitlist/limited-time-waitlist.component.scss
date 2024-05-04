@@ -1,0 +1,110 @@
+.container {
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(to right bottom, #0f3c62, #2a527f, #446a9e, #5e82be, #799bde);
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    position: fixed;
+    width: 200px;
+    background-color: #f1c40f;
+    margin-left: 2%;
+    margin-top: 2%;
+    padding: 1%;
+    border-radius: 20px;
+    font-family: 'Lilita One';
+    font-style: 'Regular';
+}
+
+button:hover {
+    border-color: none;
+    color: white;
+}
+
+.home {
+    margin-top: 7%;
+    margin-right: 7%;
+}
+.text {
+    text-align: center;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.waiting {
+    display: grid;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    background-color: #0f3c62;
+    border-radius: 20px;
+    border: solid black;
+}
+
+.text {
+    color: #f1c40f;
+    font-family: 'Lilita One';
+    font-style: 'Regular';
+}
+
+#header {
+    text-align: center;
+    vertical-align: Top;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+#opponent {
+    font-size: 400%;
+    line-height: 100%;
+}
+
+#host {
+    font-size: 200%;
+}
+#title {
+    line-height: 50%;
+}
+
+#game {
+    font-size: 300%;
+    text-align: center;
+    vertical-align: Top;
+}
+
+#ready {
+    font-size: 300%;
+    vertical-align: Top;
+}
+
+.players {
+    height: 400px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+    font-size: 125%;
+    overflow: auto;
+}
+
+.choices {
+    height: 50%;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+button {
+    fill: Solid;
+    background-color: #f1c40f;
+    float: left;
+    clear: left;
+    text-align: Center;
+    border-radius: 20px;
+    font-size: 100%;
+    font-family: 'Lilita One';
+    font-style: 'Regular';
+    transition: 0.25s;
+}

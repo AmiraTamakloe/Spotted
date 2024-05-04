@@ -1,0 +1,33 @@
+<div class="popup">
+    <p>Presque terminé!</p>
+    <div mat-dialog-content class="questions">
+        <mat-form-field id="line" appearance="fill">
+            <p>Nom du jeu :</p>
+            <input class="marg" matInput [(ngModel)]="data.gameName" placeholder="Nom" #nameInput="ngModel" required />
+            <mat-error *ngIf="nameInput.invalid"> {{ getError('nameInput') }} </mat-error>
+        </mat-form-field>
+        <mat-form-field id="line" appearance="fill">
+            <p id="description">Description du jeu :</p>
+            <input class="marg" matInput [(ngModel)]="data.description" placeholder="Description" #descriptionInput="ngModel" required />
+            <mat-error *ngIf="descriptionInput.invalid"> {{ getError('descriptionInput') }} </mat-error>
+        </mat-form-field>
+        <div>Nombre de différences : {{ diff }}</div>
+    </div>
+    <div class="modal">
+        <div #canvasContainer>
+            <canvas id="canvas" #canvasElement></canvas>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Retour</button>
+        <button
+            mat-button
+            [mat-dialog-close]="data"
+            [disabled]="nameInput.hasError('required') || descriptionInput.hasError('required')"
+            cdkFocusInitial
+            routerLink="/config"
+        >
+            Sauvegarder
+        </button>
+    </div>
+</div>

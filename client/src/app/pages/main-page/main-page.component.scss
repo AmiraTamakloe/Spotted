@@ -1,0 +1,83 @@
+* {
+    font-family: 'Lilita One';
+    font-style: 'Regular';
+}
+.container {
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(to right bottom, #0f3c62, #2a527f, #446a9e, #5e82be, #799bde);
+    overflow: hidden;
+}
+
+.title {
+    color: #f1c40f;
+    font-weight: bold;
+    font-size: 600%;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: Top;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.button-mode {
+    text-align: center;
+    line-height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-items: center;
+    display: flex;
+    margin-top: 2%;
+}
+
+button {
+    fill: Solid;
+    background-color: #f1c40f;
+    float: left;
+    width: 20%;
+    height: 85px;
+    margin: 1.5%;
+    clear: left;
+    text-align: Center;
+    border-radius: 20px;
+    font-size: 200%;
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    color: #fff;
+    border-color: #1111;
+}
+
+/* footer */
+
+footer {
+    background-color: #0f3c62;
+    fill: solid;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    height: 13%;
+}
+
+footer p {
+    color: white;
+    font-size: 110%;
+    line-height: 100%;
+    text-align: Center;
+    vertical-align: Top;
+}
+
+footer div {
+    color: white;
+    font-size: 120%;
+    line-height: 100%;
+    text-align: center;
+    vertical-align: Top;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+/* end footer */

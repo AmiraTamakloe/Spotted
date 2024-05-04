@@ -1,0 +1,28 @@
+<div class="container">
+    <app-header></app-header>
+    <div>
+        <button class="selection" (click)="leaveWaitRoom()">Retourner au menu de Sélection</button>
+    </div>
+    <div id="waitingRoom" class="waiting room">
+        <div id="header" class="text">
+            <p id="opponent">En attente d'un adversaire</p>
+            <p id="host">L'hôte de cette partie est {{ firstUser }}</p>
+        </div>
+
+        <div id="title" class="text">
+            <p id="game" class="text">Jeu : {{ game.title }}</p>
+            <p id="ready" class="text">Prêt à jouer :</p>
+        </div>
+        <div id="players" class="players">
+            <div *ngIf="secondUser">
+                <div class="player" *ngFor="let user of users | slice: 1; let i = index">
+                    <div *ngIf="!user.toLowerCase().includes('undefine')" class="text user">- {{ user }}</div>
+                    <div *ngIf="(!user.toLowerCase().includes('undefine') && isHost)" class="choices">
+                        <button (click)="acceptedUser(i + 1)" type="submit" value="Accept">Choisir</button>
+                        <button (click)="refusedUser(i + 1)" type="reset" value="Refuse">Refuser</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

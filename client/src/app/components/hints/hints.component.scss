@@ -1,0 +1,36 @@
+#hints-container {
+    background-color: #0f3c62;
+    color: #f1c40f;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
+}
+
+#hints {
+    margin: 0;
+}
+
+.indice {
+    background-color: #0fa031;
+    color: #0f3c62;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.button-quit {
+    background-color: #0f3c62;
+    border: 1px solid #f1c40f;
+    border-radius: 20px;
+    color: #f1c40f;
+}
+
+.button-quit:hover {
+    background: #bcdcfa;
+    color: #0f3c62;
+}

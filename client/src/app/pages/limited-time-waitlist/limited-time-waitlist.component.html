@@ -1,0 +1,16 @@
+<div class="container">
+    <app-header></app-header>
+    <div>
+        <button class="home" (click)="leaveWaitRoom()">Retourner au menu principal</button>
+    </div>
+    <div id="waitingRoom" class="waiting room">
+        <div id="header" class="text">
+            <p id="game" class="text">Salle d'attente du Mode Temps Limité</p>
+            <p id="opponent">En attente d'un adversaire à Votre taille</p>
+            <p *ngIf="users[0]">{{ users[0] }}</p>
+            <p>vs</p>
+            <p *ngIf="users[1]">{{ users[1] }}</p>
+        </div>
+        <div *ngIf="users[1]" class="text" style="color: red">La partie va débuter dans quelques instants préparez vous</div>
+    </div>
+</div>

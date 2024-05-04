@@ -1,0 +1,40 @@
+<canvas id="canvasL" #bgdL class="left background" #bgCanvas [attr.width]="width" [attr.height]="height"></canvas>
+<canvas
+    id="canvasL"
+    #blinkL
+    class="left blink"
+    #bgCanvas
+    [attr.width]="width"
+    [attr.height]="height"
+    [ngStyle]="{ display: showCanvas ? 'block' : 'none' }"
+></canvas>
+<canvas
+    id="canvasL"
+    class="left error"
+    #errorLCanvas
+    (click)="findClickPos($event)"
+    [attr.width]="width"
+    [attr.height]="height"
+    [ngStyle]="{ 'pointer-events': isEndGame || isError ? 'none' : 'auto' }"
+></canvas>
+<canvas id="canvasR" #bgdR class="right background" #bgCanvas [attr.width]="width" [attr.height]="height"></canvas>
+<canvas
+    id="canvasR"
+    #blinkR
+    class="right blink"
+    #bgCanvas
+    [attr.width]="width"
+    [attr.height]="height"
+    [ngStyle]="{ display: showCanvas ? 'block' : 'none' }"
+></canvas>
+<canvas
+    id="canvasR"
+    class="right error"
+    #errorRCanvas
+    (click)="findClickPos($event)"
+    [attr.width]="width"
+    [attr.height]="height"
+    [ngStyle]="{ 'pointer-events': isEndGame || isError ? 'none' : 'auto' }"
+></canvas>
+<img id="source" class="hidden" src="{{ imageOriginal }}" />
+<img id="modifiedSource" class="hidden" src="{{ imageModified }}" />

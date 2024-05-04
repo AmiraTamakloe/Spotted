@@ -1,0 +1,69 @@
+<link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+    crossorigin="anonymous"
+/>
+<div id="container">
+    <div id="header">
+        <h1 routerLink="/home">Spotted : 7 différences</h1>
+    </div>
+    <div *ngIf="endGame()">
+        <app-endgame-modal
+            class="end-game"
+            [isReplay]="false"
+            [userName]="userName"
+            [playerQuit]="playerQuit"
+            [bestTimeArray]="bestTimeArray"
+            [bestTimeNameArray]="bestTimeNameArray"
+            [winnerIndicator]="winnerIndicator"
+            [gameName]="gameName"
+            [gameType]="gameType"
+            [finalTime]="finalTime"
+            (finalBestTimeNameArray)="receiveBestTime($event)"
+            (finalBestTimeArray)="receiveBestTime($event)"
+        ></app-endgame-modal>
+    </div>
+    <div id="canvas-container">
+        <app-play-area
+            [isReplay]="isReplay"
+            [srcOriginalImg]="game.srcOriginal"
+            [srcModifiedImg]="game.srcModified"
+            [diffArray]="arrayDiff"
+            [isEndGame]="endGame()"
+            [isSolo]="false"
+            [isHost]="isHost"
+            [hostId]="idHost"
+            [diffHost]="diffHost"
+            [diffInv]="diffInv"
+        ></app-play-area>
+        <div id="container-right">
+            <div class="quit">
+                <button class="button-quit" (click)="leaveGame()" [disabled]="isEndGame">Abandonner</button>
+            </div>
+            <div class="timer">
+                <app-stopwatch
+                    (finalTime)="receiveTime($event)"
+                    [isTimeOut]="isEndGame"
+                    [speed]="1"
+                    class="infos-stopwatch-counter"
+                    id="stopwatch"
+                    [disabled]="isEndGame"
+                ></app-stopwatch>
+            </div>
+            <div class="chat">
+                <app-chat-box [gameId]="id" [hostId]="idHost" [isDisabled]="false"></app-chat-box>
+            </div>
+        </div>
+    </div>
+    <div id="word-container">
+        <p id="word">Nom : {{ game.title }}</p>
+        <p id="difficulte">Difficulté : {{ game.difficulty }}</p>
+        <p id="mode-jeu">Mode de Jeu : Multijoueur</p>
+        <p>Nom du joueur: {{ firstUser }}</p>
+        <p>Nom du joueur: {{ secondUser }}</p>
+
+        <p id="differences-restantes">Différences trouver : {{ diffHost }} / {{ game.numberOfDiff }} par {{ firstUser }}</p>
+        <p id="differences-restantes">Différences trouver : {{ diffInv }} / {{ game.numberOfDiff }} par {{ secondUser }}</p>
+    </div>
+</div>

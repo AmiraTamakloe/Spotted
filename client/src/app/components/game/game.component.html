@@ -1,0 +1,69 @@
+<div class="game">
+    <link href="https://fonts.googleapis.com/css?family=Lilita One" rel="stylesheet" />
+    <div class="picture"><img class="image-game" [src]="image" alt="Bol de riz" /></div>
+    <div class="scores">
+        <h1 class="text">
+            <span class="left-text" id="name-game">{{ gamesService.games[index].title }}</span>
+        </h1>
+        <p class="difficulty">Difficulté : {{ gamesService.games[index].difficulty }}</p>
+        <p class="top">TOP 3</p>
+        <p class="text">
+            <span class="left-text">Solo</span>
+            <span class="right-text">Multijoueur</span>
+        </p>
+        <p class="text">
+            <span id="solo1" class="left-text">1. {{ gamesService.games[index].solo[0].name }}: {{ gamesService.games[index].solo[0].score }}</span>
+            <span id="multiplayer1" class="right-text"
+                >1. {{ gamesService.games[index].multiplayer[0].name }}: {{ gamesService.games[index].multiplayer[0].score }}</span
+            >
+        </p>
+        <p class="text">
+            <span id="solo2" class="left-text">2. {{ gamesService.games[index].solo[1].name }}: {{ gamesService.games[index].solo[1].score }}</span>
+            <span id="multiplayer2" class="right-text"
+                >2. {{ gamesService.games[index].multiplayer[1].name }}: {{ gamesService.games[index].multiplayer[1].score }}</span
+            >
+        </p>
+        <p class="text">
+            <span id="solo3" class="left-text">3. {{ gamesService.games[index].solo[2].name }} : {{ gamesService.games[index].solo[2].score }}</span>
+            <span id="multiplayer3" class="right-text"
+                >3. {{ gamesService.games[index].multiplayer[2].name }}: {{ gamesService.games[index].multiplayer[2].score }}</span
+            >
+        </p>
+    </div>
+    <div id="play-button">
+        <div class="solo-button">
+            <button class="button change" (click)="isConfig ? resetScore() : (openOverlay = true)">
+                {{ isConfig ? 'Réinitialiser Scores' : 'Solo' }}
+            </button>
+        </div>
+        <div *ngIf="openOverlay" class="overlay">
+            <div class="overlay-content">
+                <h1 id="inputname">Nom du Joueur</h1>
+                <input #inputElement [(ngModel)]="name" placeholder="Entrez votre nom ici... " maxlength="20" />
+                <div class="name-button">
+                    <button class="button" (click)="submitName()" [disabled]="name.length < 3">Continuer</button>
+                    <button class="button" (click)="clearName()">Abandonner</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="openOverlayMultiplayer" class="overlay">
+            <div class="overlay-content">
+                <h1 id="inputname">Nom du Joueur</h1>
+                <input #inputElement [(ngModel)]="name" placeholder="Entrez votre nom ici... " maxlength="20" />
+                <div class="name-button">
+                    <button class="button" (click)="submitNameMultiplayer()" [disabled]="name.length < 3">Continuer</button>
+                    <button class="button" (click)="clearName()">Abandonner</button>
+                </div>
+            </div>
+        </div>
+        <div class="create-button">
+            <button
+                class="button create change"
+                (click)="isConfig ? deleteGame(index) : (openOverlayMultiplayer = true)"
+                [disabled]="isConfigMultiplayer"
+            >
+                {{ isConfig ? 'Supprimer' : multiplayerButtonIndicator }}
+            </button>
+        </div>
+    </div>
+</div>

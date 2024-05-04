@@ -1,0 +1,83 @@
+<div id="full-container">
+    <div id="upload-container">
+        <div id="toolbar">
+            <h1>Outils à dessins</h1>
+            <label for="stroke">Couleur</label>
+            <input class="stroke" id="stroke" name="stroke" type="color" [(ngModel)]="stroke" (input)="updateSettings()" />
+            <label for="lineWidth">Épaisseur</label>
+            <input class="lineWidth" id="lineWidth" name="lineWidth" type="number" value="5" [(ngModel)]="lineWidth" (input)="updateSettings()" />
+            <button class="draw" id="draw" (click)="drawing()">Crayon</button>
+            <button class="eraser" id="eraser" (click)="cleaning()">Efface</button>
+            <button class="rectangle" id="rectangle" (click)="recActivate()">Rectangle</button>
+            <button class="swap" id="swap" (click)="reverse()">Inverser les dessins</button>
+            <button class="clear" id="clear" (click)="clearArea()">Tout effacer</button>
+            <button class="clone-left" id="clone-left" (click)="duplicLeft()">Dupliquer gauche</button>
+            <button class="clone-right" id="clone-right" (click)="duplicRight()">Dupliquer right</button>
+            <button class="undo" id="undo" (click)="undo()">Annuler</button>
+            <button class="redo" id="redo" (click)="redo()">Refaire</button>
+        </div>
+        <div class="left area">
+            <canvas
+                #cLeft
+                class="drawing-board"
+                (mousedown)="isRec ? startRectangle($event) : clickDown(true, $event)"
+                (mouseup)="isRec ? endRectangle($event) : clickUp()"
+                (mouseleave)="isRec ? leaved() : leaved()"
+                (mousemove)="isRec ? moveRectangle(true, $event) : mouseMove(true, $event)"
+                (contextmenu)="isRec ? clickUp() : clickUp()"
+            ></canvas>
+            <canvas #bgLeft class="background"> </canvas>
+            <div class="button-area">
+                <div class="message" *ngIf="imagesMessages.msgLeft">{{ imagesMessages.msgLeft }}</div>
+                <img [src]="imagesUrl.urlLeft" *ngIf="imagesUrl.urlLeft" style="display: none" />
+                <input #leftFileInput id="leftInput" type="file" accept=".BMP" (change)="selectBMPImage($event, 1)" style="display: none" />
+                <button class="edit" (click)="leftFileInput.click()">Ajouter une image à gauche</button>
+                <button class="edit" (click)="deleteImage(1)">Suppression gauche</button>
+            </div>
+        </div>
+        <div class="right area">
+            <canvas
+                #cRight
+                class="drawing-board"
+                (mousedown)="isRec ? startRectangle($event) : clickDown(false, $event)"
+                (mouseup)="isRec ? endRectangle($event) : clickUp()"
+                (mouseleave)="isRec ? leaved() : leaved()"
+                (mousemove)="isRec ? moveRectangle(false, $event) : mouseMove(false, $event)"
+                (contextmenu)="isRec ? clickUp() : clickUp()"
+            ></canvas>
+            <canvas #bgRight class="background"> </canvas>
+            <div class="button-area">
+                <div class="message" *ngIf="imagesMessages.msgRight">{{ imagesMessages.msgRight }}</div>
+                <img [src]="imagesUrl.urlRight" class="image-upload-right" *ngIf="imagesUrl.urlRight" style="display: none" />
+                <button class="edit" (click)="rightFileInput.click()">Ajouter une image à right</button>
+                <button class="edit" (click)="deleteImage(2)">Suppression right</button>
+                <input #rightFileInput id="rightInput" type="file" accept=".BMP" (change)="selectBMPImage($event, 2)" style="display: none" />
+            </div>
+        </div>
+        <div class="save container">
+            <div><img *ngIf="imagesUrl.urlRight" /></div>
+            <button (click)="fileInput.click()">Ajouter la même image</button>
+            <input #fileInput type="file" accept=".BMP" (change)="selectBMPImage($event, 0)" style="display: none" />
+            <button (click)="deleteImage(0)">Reinitialiser</button>
+            <button routerLink="/config">Retour configuration</button>
+            <div id="slider">
+                <p style="color: #0f3c62">élargissement</p>
+                <div class="enlargement">
+                    <button class="slider enlargement" (click)="decrement()">-</button>
+                    <div class="enlargement value">{{ enlargementVal }}</div>
+                    <button class="slider enlargement" (click)="increment()">+</button>
+                </div>
+            </div>
+
+            <input type="file" id="file-upload" style="display: none" #fileUpload name="photo" accept=".BMP" />
+            <button (click)="openDialog()">
+                Sauvegarder
+                <mat-icon>cloud_upload</mat-icon>
+            </button>
+        </div>
+    </div>
+    <canvas class="empty" width="640px" height="480px" border-radius="20px" #htmlId id="myCanvas2"></canvas>
+    <canvas #cTemp class="empty canvas" id="empty-canvas" width="640px" height="480px"></canvas>
+    <canvas #canvasMergeL class="empty canvas" id="empty-canvas" width="640px" height="480px"></canvas>
+    <canvas #canvasMergeR class="empty canvas" id="empty-canvas" width="640px" height="480px"></canvas>
+</div>

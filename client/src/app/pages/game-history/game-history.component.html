@@ -1,0 +1,33 @@
+<div id="container">
+    <div id="header">
+        <h1 routerLink="/home">Spotted : 7 différences</h1>
+    </div>
+    <div>
+        <button (click)="deleteHistory()">Supprimer tout l'historique</button>
+        <button class="config" routerLink="/config">Retourner au menu de configuration</button>
+    </div>
+    <div *ngFor="let gameHistory of historyService.history">
+        <div class="game">
+            <link href="https://fonts.googleapis.com/css?family=Lilita One" rel="stylesheet" />
+            <div class="history">
+                <p>Date de début : {{ gameHistory.date }}</p>
+                <p>Durée de la partie : {{ gameHistory.time }}</p>
+                <p>Mode de jeu : {{ gameHistory.type }}</p>
+                <div *ngIf="gameHistory.type !== 'multijoueur classique'">
+                    <p [ngClass]="{ 'text-decoration': gameHistory.gaveUp === 1, bold: gameHistory.winner === 1 }">
+                        Nom du Joueur : {{ gameHistory.hostName }}
+                    </p>
+                </div>
+
+                <div *ngIf="gameHistory.type === 'multijoueur classique'">
+                    <p [ngClass]="{ 'text-decoration': gameHistory.gaveUp === 1, bold: gameHistory.winner === 1 }">
+                        Nom du premier Joueur : {{ gameHistory.hostName }}
+                    </p>
+                    <p [ngClass]="{ 'text-decoration': gameHistory.gaveUp === 2, bold: gameHistory.winner === 2 }">
+                        Nom de l'adversaire : {{ gameHistory.invName }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

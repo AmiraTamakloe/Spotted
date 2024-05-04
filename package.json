@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/node": "^18.15.3"
+  },
+  "dependencies": {
+    "@angular-ru/common": "^15.313.0"
+  }
+}

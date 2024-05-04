@@ -1,0 +1,12 @@
+<div id="message">
+    <h1 mat-dialog-title>Félicitations {{ userName }}!</h1>
+    <h1 mat-dialog-content>
+        Même Sherlock Holmes n'est pas à ton niveau. Tu es vraiment exceptionnel ! Le digne successeur du grand Albert Einstein lui-même.
+    </h1>
+    <div mat-dialog-actions class="boutons">
+        <button id="bouton" class="retour" mat-button mat-dialog-close [routerLink]="leftLink">{{ leftButton }}</button>
+        <button id="bouton" class="video" mat-button mat-dialog-close [routerLink]="isReplay ? null : rightLink" (click)="onClick()">
+            {{ rightButton }}
+        </button>
+    </div>
+</div>

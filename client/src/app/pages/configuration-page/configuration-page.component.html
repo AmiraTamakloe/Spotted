@@ -1,0 +1,66 @@
+<div class="container">
+    <app-header></app-header>
+    <div class="page">
+        <div class="box">
+            <button id="left" class="button" type="button" (click)="leftNav()" [disabled]="isLeftDisabled()">Précédent</button>
+            <button class="create button" routerLink="/gameCreation">Créer Nouveau Jeu</button>
+            <button class="constante button" mat-button [matMenuTriggerFor]="constante">Définir Constantes</button>
+            <mat-menu #constante="matMenu">
+                <div>Temps initial: {{ initialTime }}s</div>
+                <input
+                    class="slider-constante"
+                    type="range"
+                    min="1"
+                    max="60"
+                    [(ngModel)]="initialTime"
+                    (input)="changeInitialTime($event)"
+                    (mouseup)="updateConst()"
+                />
+                <div>Pénalité par indice: {{ penalty }}s</div>
+                <input
+                    class="slider-constante"
+                    type="range"
+                    min="1"
+                    max="10"
+                    [(ngModel)]="penalty"
+                    (input)="changePenalty($event)"
+                    (mouseup)="updateConst()"
+                />
+                <div>Gain par différences: {{ gain }}s</div>
+                <input
+                    class="slider-constante"
+                    type="range"
+                    min="1"
+                    max="10"
+                    [(ngModel)]="gain"
+                    (input)="changeGain($event)"
+                    (mouseup)="updateConst()"
+                />
+            </mat-menu>
+            <button class="sideBar button" mat-button [matMenuTriggerFor]="menu">Paramètres Jeu</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="deleteAll()">Supprimer fiches</button>
+                <button mat-menu-item (click)="resetAll()">Réinitialiser scores</button>
+                <button mat-menu-item (click)="resetConstant()">Réinitialiser constantes</button>
+                <button mat-menu-item routerLink="/history">Historique</button>
+            </mat-menu>
+        </div>
+        <div class="grid">
+            <div *ngIf="indexComponent1 < numberOfElement">
+                <app-game [index]="indexComponent1" [isConfig]="true"></app-game>
+            </div>
+            <div *ngIf="indexComponent2 < numberOfElement">
+                <app-game [index]="indexComponent2" [isConfig]="true"></app-game>
+            </div>
+            <div *ngIf="indexComponent3 < numberOfElement">
+                <app-game [index]="indexComponent3" [isConfig]="true"></app-game>
+            </div>
+            <div *ngIf="indexComponent4 < numberOfElement">
+                <app-game [index]="indexComponent4" [isConfig]="true"></app-game>
+            </div>
+        </div>
+        <div class="box">
+            <button id="right" class="button" type="button" (click)="rightNav()" [disabled]="isRightDisabled()">Suivant</button>
+        </div>
+    </div>
+</div>

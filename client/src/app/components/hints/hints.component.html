@@ -1,0 +1,7 @@
+<div id="hints-container">
+    <div class="indice" *ngFor="let i of hints; let index=index" [ngStyle]="{ 'background-color': colorSwitches[index] ? '#0fa031' : 'red' }">
+        {{ i }}
+    </div>
+    <button class="button-quit" (click)="askHint()" [disabled]="isReplay">Demander un indice</button>
+    <p id="penalité">Temps enlevé par indice : {{ this.penalty }}s</p>
+</div>

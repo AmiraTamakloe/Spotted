@@ -1,0 +1,45 @@
+.popup {
+    position: fixed;
+    width: 110vh;
+    height: 98vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f3c62;
+    color: #f1c40f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#description {
+    padding-top: 20px;
+}
+
+#canvas {
+    width: 10px;
+}
+
+#line {
+    display: flex;
+    align-items: baseline;
+}
+
+.marg {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+mat-form-field .mat-input-element {
+    height: 50px;
+}
+
+mat-form-field .mat-form-field-subscript-wrapper {
+    position: absolute;
+    bottom: -20px;
+}
+

@@ -1,0 +1,54 @@
+<link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+    crossorigin="anonymous"
+/>
+<div id="container">
+    <div id="header">
+        <h1 routerLink="/home">Spotted : 7 différences</h1>
+    </div>
+    <div *ngIf="endGame()">
+        <app-endgame-modal class="end-game" [userName]="userName" [isLt]="true"></app-endgame-modal>
+    </div>
+    <div id="canvas-container">
+        <app-play-area-lt
+            [srcOriginalImg]="games[0]?.srcOriginal"
+            [srcModifiedImg]="games[0]?.srcModified"
+            [diffArray]="games[0]?.arrDiff"
+            [isEndGame]="endGame()"
+            [isSolo]="false"
+            [isHost]="isHost"
+            [hostId]="idHost"
+            [diffHost]="diffHost"
+            [diffInv]="diffInv"
+        ></app-play-area-lt>
+
+        <div id="container-right">
+            <div class="quit">
+                <button class="button-quit" (click)="leaveGame()" [disabled]="isEndGame">Abandonner</button>
+            </div>
+            <div class="timer">
+                <app-stopwatch-lt
+                    [isTimeOut]="isEndGame"
+                    class="infos-stopwatch-counter"
+                    id="stopwatch"
+                    [disabled]="isEndGame"
+                    (timeOutEvent)="timeOut()"
+                    (finalTime)="receiveTime($event)"
+                ></app-stopwatch-lt>
+            </div>
+            <div class="chat">
+                <app-chat-box [gameId]="id" [hostId]="idHost" [isDisabled]="false"></app-chat-box>
+            </div>
+        </div>
+    </div>
+    <div id="word-container">
+        <p id="mode-jeu">Mode de Jeu : Multijoueur Temps Limité</p>
+        <p *ngIf="firstUser !== quitterName">Nom du joueur: {{ firstUser }}</p>
+        <p *ngIf="secondUser !== quitterName">Nom du joueur: {{ secondUser }}</p>
+
+        <p id="differences-restantes">Différences trouvées : {{ score }}</p>
+    </div>
+    <app-hints *ngIf="quitterName !== ''" [nbHints]="nbHints" [diffArray]="games[0]?.arrDiff"></app-hints>
+</div>

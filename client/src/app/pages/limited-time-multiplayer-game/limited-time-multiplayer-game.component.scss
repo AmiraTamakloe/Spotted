@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lilita One';
+    font-style: 'Regular';
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+a {
+    justify-self: flex-end;
+}
+
+#header {
+    background-color: #0f3c62;
+    color: #f1c40f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+#header h1git {
+    margin: 0;
+}
+
+#header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+#canvas-container {
+    background-color: #bcdcfa;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+}
+
+#container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 5%;
+    margin-left: 85%;
+    width: 10%;
+    height: 480px;
+}
+
+.quit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+}
+
+.button-quit {
+    width: 70%;
+    height: 50%;
+    background-color: #0f3c62;
+    border: 1px solid #0f3c62;
+    border-radius: 20px;
+    color: #f1c40f;
+}
+
+.button-quit:hover {
+    background: #bcdcfa;
+    color: #0f3c62;
+}
+
+.chat {
+    display: flex;
+    width: 100%;
+    height: 70%;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 15%;
+}
+
+#word-container {
+    background-color: #fff;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#word {
+    margin: 0;
+}
+
+.end-game {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f3c62;
+    color: #f1c40f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    width: 40%;
+    height: 40%;
+}
+
+img {
+    width: 30%;
+    height: 20%;
+}
+.header {
+    background: #0f3c62;
+    width: 100%;
+    height: 15%;
+}

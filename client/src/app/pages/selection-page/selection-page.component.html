@@ -1,0 +1,25 @@
+<div class="container">
+    <app-header></app-header>
+    <div class="page">
+        <div class="box">
+            <button id="left" class="arrow" type="button" (click)="leftNav()" [disabled]="isLeftDisabled()">Précédent</button>
+        </div>
+        <div class="grid">
+            <div *ngIf="indexGame1 < numberOfElement">
+                <app-game [index]="indexGame1" [isConfig]="false"></app-game>
+            </div>
+            <div *ngIf="indexGame2 < numberOfElement">
+                <app-game [index]="indexGame2" [isConfig]="false"></app-game>
+            </div>
+            <div *ngIf="indexGame3 < numberOfElement">
+                <app-game [index]="indexGame3" [isConfig]="false"></app-game>
+            </div>
+            <div *ngIf="indexGame4 < numberOfElement">
+                <app-game [index]="indexGame4" [isConfig]="false"></app-game>
+            </div>
+        </div>
+        <div class="box">
+            <button id="right" class="arrow" type="button" (click)="rightNav()" [disabled]="isRightDisabled()">Suivant</button>
+        </div>
+    </div>
+</div>

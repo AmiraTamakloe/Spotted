@@ -1,0 +1,26 @@
+<div class="chat-box">
+    <div class="message-container">
+        <div class="message-bubble me">
+            <div class="text" *ngFor="let message of roomMessages">
+                <div class="message">
+                    <p [style.color]="message.color">{{ message.text }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="input-container">
+        <input
+            [disabled]="isReplay"
+            class="chat-input"
+            #chatBoxInput
+            (keydown)="onChatBoxKeyDownCheat($event)"
+            (keydown)="onChatBoxKeyDownHint($event)"
+            [(ngModel)]="roomMessage"
+            (keydown.enter)="addMessage()"
+            type="text"
+            [placeholder]="isDisabled ? ' ' : 'écrivez ici...'"
+            [disabled]="isDisabled"
+        />
+        <button [disabled]="isReplay" (click)="addMessage()" [ngStyle]="{ display: isDisabled ? 'none' : 'inline' }">Envoyer</button>
+    </div>
+</div>

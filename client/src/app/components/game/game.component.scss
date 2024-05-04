@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lilita One';
+}
+h1 {
+    margin-bottom: 27%;
+}
+button {
+    background-color: #f1c40f;
+    height: 70%;
+    width: 100%;
+    border-radius: 20px;
+}
+.change {
+    margin-left: 30%;
+    font-size: 125%;
+}
+
+.change:hover {
+    transform: scale(1.1);
+    border-color: #1111;
+}
+.create {
+    margin-left: 50%;
+}
+
+.image-game {
+    height: 225px;
+    width: 225px;
+    margin-top: 10%;
+    margin-left: 20%;
+    border: solid;
+    border-radius: 20%;
+}
+
+.new-game {
+    width: 25px;
+    height: 25px;
+    margin-top: 10%;
+}
+
+.new-game:hover {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+.game {
+    display: grid;
+    grid-template-areas: 'picture scores' 'play-button play-button';
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 90% 10%;
+    margin: 2%;
+    background-color: #bcdcfa;
+    border-radius: 30px;
+    border: solid;
+}
+
+.scores {
+    grid-area: 'scores';
+    padding-right: 10%;
+    margin: 5%;
+    font-size: large;
+}
+
+.top {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.text {
+    text-align: right;
+    position: relative;
+}
+
+.right-text {
+    color: black;
+    text-align: right;
+}
+.left-text {
+    left: 0;
+    position: absolute;
+    color: black;
+}
+
+.difficulty {
+    font-size: 120%;
+    color: black;
+}
+
+#name-game {
+    margin-top: 3%;
+    text-decoration: underline;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 150%;
+    color: black;
+}
+
+#play-button {
+    grid-area: 'play-button';
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.overlay-content {
+    position: relative;
+    height: 25%;
+    width: 25%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f3c62;
+    border: 1px solid #bcdcfa;
+    border-radius: 20px;
+    color: #f1c40f;
+    padding: 20px;
+}
+
+#inputname {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin-left: -12%;
+}
+
+input {
+    position: absolute;
+    top: 70%;
+    left: 40%;
+    margin-left: -12%;
+}
+
+.name-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-button button {
+    flex-basis: 48%;
+}

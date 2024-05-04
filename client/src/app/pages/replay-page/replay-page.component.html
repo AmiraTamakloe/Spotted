@@ -1,0 +1,79 @@
+<link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+    crossorigin="anonymous"
+/>
+<div id="container">
+    <div id="header">
+        <h1 routerLink="/home">Spotted : 7 différences</h1>
+    </div>
+    <div *ngIf="isEndGame">
+        <app-endgame-modal class="end-game" [isReplay]="true" [userName]="userName1"></app-endgame-modal>
+    </div>
+    <div id="canvas-container">
+        <app-play-area
+            #cpa
+            [srcOriginalImg]="originalImageSrc"
+            [srcModifiedImg]="modifiedImageSrc"
+            [diffArray]="arrayDiff"
+            [isEndGame]="isEndGame"
+            [isHost]="false"
+            [isSolo]="true"
+            [isReplay]="true"
+            *ngIf="ifExist"
+        ></app-play-area>
+        <div id="container-right">
+            <div class="timer">
+                <app-stopwatch
+                    *ngIf="ifExist"
+                    [isTimeOut]="isEndGame"
+                    [speed]="replaySpeed"
+                    class="infos-stopwatch-counter"
+                    id="stopwatch"
+                    [disabled]="isEndGame"
+                ></app-stopwatch>
+            </div>
+            <div class="enlargement">
+                <div class="line">
+                    Vitesse :
+                    <button class="slider-enlargement" (click)="decrement()">-</button>
+                    <div class="enlargement-value">{{ replaySpeed }}</div>
+                    <button class="slider-enlargement" (click)="increment()">+</button>
+                </div>
+                <div class="line">
+                    <button class="button-replay" (click)="restart()">Revoir</button>
+                    <button class="button-replay" (click)="playPause()">Play/pause</button>
+                </div>
+            </div>
+            <div class="chat">
+                <app-chat-box *ngIf="ifExist" [isReplay]="true" [isDisabled]="true"></app-chat-box>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="mode === 'solo'">
+        <div id="word-container">
+            <p id="word">Nom : {{ game.title }}</p>
+            <p id="difficulte">Difficulté : {{ game.difficulty }}</p>
+            <p id="mode-jeu">Mode de Jeu : Solo</p>
+            <p>Nom du joueur: {{ userName1 }}</p>
+            <p id="differences-restantes">
+                Différences trouver : {{ modeSoloService.getNumberOfDifferences() }} / {{ differences }} par {{ userName1 }}
+            </p>
+        </div>
+        <app-hints *ngIf="ifExist" [isReplay]="true"></app-hints>
+    </div>
+    <div *ngIf="mode === 'multi'">
+        <div id="word-container">
+            >
+            <p id="word">Nom : {{ game.title }}</p>
+            <p id="difficulte">Difficulté : {{ game.difficulty }}</p>
+            <p id="mode-jeu">Mode de Jeu : Multijoueur</p>
+            <p>Nom du joueur: {{ userName1 }}</p>
+            <p>Nom du joueur: {{ userName2 }}</p>
+
+            <p id="differences-restantes">Différences trouver : {{ diffHost }} / {{ game.numberOfDiff }} par {{ userName1 }}</p>
+            <p id="differences-restantes">Différences trouver : {{ diffInv }} / {{ game.numberOfDiff }} par {{ userName2 }}</p>
+        </div>
+    </div>
+</div>

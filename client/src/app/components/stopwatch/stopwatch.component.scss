@@ -1,0 +1,14 @@
+#stopwatchMainDiv {
+    display: inline-block;
+    position: relative;
+}
+
+.stopwatch {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #fefafa;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    animation: shake 0.5s linear infinite;
+}
